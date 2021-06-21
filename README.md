@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="src\assets\img\png\transparentBanner.png" width="60%" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##
 
-## Available Scripts
+<p align="center">
+  <a href="#project-star2">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#techs-rocket">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#installation-wrench">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#start-on">Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#test-heavy_check_mark">Test</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#contributing-">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license-memo">License</a>
+</p>
 
-In the project directory, you can run:
+##
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project :star2:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This repo contains an application was idealized by @Rocketseat's Next Level Week #6 - Together.
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Deployed [here](https://letmeask.ronne.dev).
 
-### `yarn build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Techs :rocket:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] [ReactJS](https://reactjs.org);
+- [x] [TypeScript](https://www.typescriptlang.org/);
+- [x] [Styled Components](https://styled-components.com/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `yarn eject`
+## Installation :wrench:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+First you need to clone the project using `git clone https://github.com/leoronne/letmeask.git`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Then you can install the application using `npm install` or `yarn install` on the client and server directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Start :on:
 
-## Learn More
+To start the application interface just run `npm start` or `yarn start` on the root dir.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Test :heavy_check_mark:
+
+To run the tests on this application, just run `npm run test:cover` or `yarn test:cover` on the client directory, it will generate a coverage report on the same dir.
+
+<br>
+
+## Contributing 🤔
+
+Please read [CONTRIBUTING](https://github.com/leoronne/letmeask/blob/master/CONTRIBUTING.md) for details on code of conduct, and the process for submitting pull requests to the project.
+
+<br>
+
+## License :memo:
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](https://github.com/leoronne/letmeask/blob/master/LICENSE)**
+- Copyright 2020 © <a href="https://github.com/leoronne" target="_blank">Leonardo Ronne</a>.
+
+##
