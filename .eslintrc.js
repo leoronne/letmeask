@@ -28,6 +28,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
     'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
     'prettier/prettier': 'off',
   },
   settings: {
