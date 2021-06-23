@@ -5,9 +5,9 @@ interface Props {
   children: ReactNode;
 }
 
-function AppProvider({ children }: Props) {
+function HooksProvider({ children }: Props) {
   return <AuthProvider>{children}</AuthProvider>;
 }
 
-export default AppProvider;
+export default HooksProvider;
 export { useAuth };

@@ -9,16 +9,16 @@ import { ReactComponent as Google } from '../../../assets/img/svg/google.svg';
 interface IconProps {
   width: number;
   height: number;
-  marginTop?: number;
-  marginBottom?: number;
+  margin_top?: number;
+  margin_bottom?: number;
 }
 
 const iconCSS = css`
   width: ${({ width }: IconProps) => width}px;
   height: ${({ height }: IconProps) => height}px;
 
-  margin-top: ${({ marginTop }: IconProps) => marginTop || 0}px;
-  margin-bottom: ${({ marginBottom }: IconProps) => marginBottom || 0}px;
+  margin-top: ${({ margin_top }: IconProps) => margin_top || 0}px;
+  margin-bottom: ${({ margin_bottom }: IconProps) => margin_bottom || 0}px;
 `;
 
 export const LogoIcon = styled(Logo)<IconProps>`

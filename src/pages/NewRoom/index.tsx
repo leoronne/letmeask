@@ -24,12 +24,12 @@ function NewRoom() {
               setRoom(e.target.value);
             }}
           />
-          <ButtonOutlined type="submit" minWidth="100%">
+          <ButtonOutlined type="submit" min_width="100%">
             <Icons.CreateIcon width={25} height={25} />
             <p>Criar sala</p>
           </ButtonOutlined>
         </Styles.Form>
-        <Link to="/" marginTop={16}>
+        <Link to="/" margin_top={16}>
           <Icons.LoginIcon width={16} height={16} />
           Entrar em uma sala já existente
         </Link>

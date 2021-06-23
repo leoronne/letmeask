@@ -5,9 +5,9 @@ import { Button } from '@material-ui/core';
 
 interface ButtonProps extends ThemeProps, ButtonHTMLAttributes<HTMLButtonElement> {
   width?: number;
-  minWidth?: string;
+  min_width?: string;
   height?: number;
-  colorScheme?: {
+  color_scheme?: {
     accent: string;
     text: string;
   };
@@ -21,9 +21,9 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
     flex-direction: column;
 
     background: transparent;
-    color: ${({ colorScheme, theme }: ButtonProps) => (colorScheme ? colorScheme.accent : theme.colors.primary.base)};
+    color: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.accent : theme.colors.primary.base)};
     border: 2px solid
-      ${({ colorScheme, theme }: ButtonProps) => (colorScheme ? colorScheme.accent : theme.colors.primary.base)};
+      ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.accent : theme.colors.primary.base)};
 
     text-transform: none;
     font-weight: 500;
@@ -32,7 +32,7 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
 
     height: ${({ height }: ButtonProps) => height || 50}px;
     width: ${({ width }: ButtonProps) => (width ? `${width}px` : 'max-content')};
-    min-width: ${({ minWidth }: ButtonProps) => minWidth || 'auto'};
+    min-width: ${({ min_width }: ButtonProps) => min_width || 'auto'};
     border-radius: ${({ theme }: ButtonProps) => theme.borderRadius.base};
 
     outline: none;
@@ -52,19 +52,19 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
     }
 
     &:hover {
-      background: ${({ colorScheme, theme }: ButtonProps) =>
-        colorScheme ? colorScheme.accent : theme.colors.primary.base};
+      background: ${({ color_scheme, theme }: ButtonProps) =>
+        color_scheme ? color_scheme.accent : theme.colors.primary.base};
       transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
 
       p,
       svg {
         transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
-        color: ${({ colorScheme, theme }: ButtonProps) => (colorScheme ? colorScheme.text : theme.colors.white.base)};
-        fill: ${({ colorScheme, theme }: ButtonProps) => (colorScheme ? colorScheme.text : theme.colors.white.base)};
+        color: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.text : theme.colors.white.base)};
+        fill: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.text : theme.colors.white.base)};
       }
 
       path {
-        fill: ${({ colorScheme, theme }: ButtonProps) => (colorScheme ? colorScheme.text : theme.colors.white.base)};
+        fill: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.text : theme.colors.white.base)};
       }
     }
 

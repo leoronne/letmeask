@@ -1,10 +1,12 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyles from './styles/GlobalStyles';
-import { createTheme } from './styles/theme';
+import HooksProvider from './hooks';
 
 import Routes from './routes';
+
+import GlobalStyles from './styles/GlobalStyles';
+import { createTheme } from './styles/theme';
 
 function App() {
   const theme = createTheme();
@@ -12,12 +14,14 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <GlobalStyles />
-          <Routes />
+          <HooksProvider>
+            <GlobalStyles />
+            <Routes />
+          </HooksProvider>
         </BrowserRouter>
       </ThemeProvider>
     </>
   );
-};
+}
 
 export default App;

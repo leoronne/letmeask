@@ -26,6 +26,7 @@ module.exports = {
   },
   plugins: ['prettier', 'react', 'react-hooks', 'import', 'jsx-a11y'],
   rules: {
+    'camelcase': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/extensions': 'off',

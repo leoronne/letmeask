@@ -10,11 +10,11 @@ type User = {
 interface AuthContextProps {
   user?: User;
   signInWithGoogle(): Promise<void>;
-};
+}
 
 interface Props {
   children: ReactNode;
-};
+}
 
 const AuthContext = createContext({} as AuthContextProps);
 
@@ -43,7 +43,7 @@ function AuthProvider({ children }: Props) {
     };
   }, []);
 
-  async function signInWithGoogle() {
+  const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
 
@@ -60,7 +60,7 @@ function AuthProvider({ children }: Props) {
         avatar: photoURL,
       });
     }
-  }
+  };
 
   return <AuthContext.Provider value={{ user, signInWithGoogle }}>{children}</AuthContext.Provider>;
 }

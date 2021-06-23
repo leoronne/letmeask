@@ -5,7 +5,7 @@ import styled from 'styled-components';
 interface LinkProps extends ThemeProps, LinkHTMLAttributes<HTMLLinkElement> {
   hasDecoration?: boolean;
   fontSize?: number;
-  marginTop?: number;
+  margin_top?: number;
   color?: string;
 }
 
@@ -18,7 +18,7 @@ export const Link = styled(RouterLink)<LinkProps>`
   text-decoration: ${({ hasDecoration }: LinkProps) => (hasDecoration ? 'underline' : 'none')};
   font-size: ${({ fontSize }: LinkProps) => (fontSize ? `${fontSize}px` : 'initial')};
 
-  margin-top: ${({ marginTop }: LinkProps) => marginTop || 0}px;
+  margin-top: ${({ margin_top }: LinkProps) => margin_top || 0}px;
 
   transition: ${({ theme }: LinkProps) => theme.transitions.easeInOut.base};
 

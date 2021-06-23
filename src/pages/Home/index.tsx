@@ -25,11 +25,11 @@ function Home() {
   return (
     <Styles.Main>
       <Styles.Content>
-        <Icons.LogoIcon width={150} height={71} marginBottom={32} />
+        <Icons.LogoIcon width={150} height={71} margin_bottom={32} />
         <ButtonOutlined
           type="button"
-          colorScheme={{ accent: '#EA4335', text: '#fff' }}
-          minWidth="100%"
+          color_scheme={{ accent: '#EA4335', text: '#fff' }}
+          min_width="100%"
           onClick={() => handleCreateRoom()}
         >
           <Icons.GoogleIcon width={25} height={25} />
@@ -47,7 +47,7 @@ function Home() {
               setRoom(e.target.value);
             }}
           />
-          <ButtonOutlined type="submit" minWidth="100%">
+          <ButtonOutlined type="submit" min_width="100%">
             <Icons.LoginIcon width={25} height={25} />
             <p>Entrar na sala</p>
           </ButtonOutlined>
