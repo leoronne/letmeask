@@ -12,6 +12,13 @@
   <a href="#test-heavy_check_mark">Test</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#contributing-">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#license-memo">License</a>
+  <br>
+  <br>
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/leoronne/letmeask">
+  <img alt="Top language" src="https://img.shields.io/github/languages/top/leoronne/letmeask">
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/leoronne/letmeask">
+
 </p>
 
 ##

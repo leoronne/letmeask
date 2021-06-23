@@ -19,7 +19,10 @@ const colors: ColorsProps = {
     '90': 'rgba(53, 65, 77, 0.9)',
     '80': 'rgba(53, 65, 77, 0.8)',
     '70': 'rgba(53, 65, 77, 0.7)',
+    '60': 'rgba(53, 65, 77, 0.6)',
     '50': 'rgba(53, 65, 77, 0.56)',
+    '40': 'rgba(53, 65, 77, 0.40)',
+    '30': 'rgba(53, 65, 77, 0.30)',
     '24': 'rgba(53, 65, 77, 0.24)',
     '12': 'rgba(53, 65, 77, 0.12)',
     '08': 'rgba(53, 65, 77, 0.08)',
@@ -30,7 +33,10 @@ const colors: ColorsProps = {
     '90': 'rgba(255, 255, 255, 0.9)',
     '80': 'rgba(255, 255, 255, 0.8)',
     '70': 'rgba(255, 255, 255, 0.7)',
+    '60': 'rgba(255, 255, 255, 0.6)',
     '50': 'rgba(255, 255, 255, 0.56)',
+    '40': 'rgba(255, 255, 255, 0.40)',
+    '30': 'rgba(255, 255, 255, 0.30)',
     '24': 'rgba(255, 255, 255, 0.24)',
     '12': 'rgba(255, 255, 255, 0.12)',
     '08': 'rgba(255, 255, 255, 0.08)',
@@ -41,11 +47,29 @@ const colors: ColorsProps = {
     text: textColorLight,
   },
 
+  secondary: {
+    base: '#ff59f8',
+    text: textColorLight,
+  },
+
   danger: {
     base: '#ec5f5f',
     text: '#FFFFFF',
   },
+
+  disabled: {
+    base: 'rgba(255, 255, 255, 0.24)',
+    text: '#FFFFFF',
+  },
 };
+
+const transitions: ThemeProperty = {
+  easeInOut: {
+    slow: '0.9s ease-in-out',
+    base: '0.6s ease-in-out',
+    fast: '0.3s ease-in-out',
+  }
+}
 
 const spacing: ThemeProperty = {
   '1': `${unit}px`,
@@ -63,36 +87,32 @@ const spacing: ThemeProperty = {
 };
 
 const borderRadius: ThemeProperty = {
-  small: '2px',
-  base: '6px',
-  large: '12px',
+  small: '4px',
+  base: '8px',
+  large: '16px',
   extraLarge: '24px',
 };
 
-const typography: ThemeProperty = {
-  body1: {
-    fontSize: '16px',
-    fontWeight: '400',
-    letterSpacing: '0',
-    lineHeight: '22px',
-  },
-  caption1: {
-    fontSize: '13px',
-    fontWeight: '400',
-    letterSpacing: '0',
-    lineHeight: '20px',
-  },
-  caption2: {
-    fontSize: '12px',
-    fontWeight: '400',
-    letterSpacing: '0',
-    lineHeight: '16px',
-  },
+const typography: TypographyProps = {
   heading1: {
     fontFamily: `Poppins, Roboto, sans-serif`,
     fontSize: '36px',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '50px',
+    padding: `${spacing['2']} 0`,
+  },
+  heading2: {
+    fontFamily: `Poppins, Roboto, sans-serif`,
+    fontSize: '28px',
+    fontWeight: '500',
+    lineHeight: '42px',
+    padding: `${spacing['2']} 0`,
+  },
+  heading3: {
+    fontFamily: `Poppins, Roboto, sans-serif`,
+    fontSize: '24px',
+    fontWeight: '500',
+    lineHeight: '36px',
     padding: `${spacing['2']} 0`,
   },
   heading6: {
@@ -106,45 +126,14 @@ const typography: ThemeProperty = {
     lineHeight: 'unset',
     letterSpacing: 'unset',
   },
-  subtitle1: {
-    fontSize: '24px',
-    fontWeight: '500',
-    letterSpacing: '-0.01em',
-    lineHeight: '48px',
-    marginBottom: `${spacing['2']}`,
-    paddingTop: `${spacing['1']}`,
-    paddingBottom: `${spacing['1']}`,
-  },
-  subtitle2: {
-    fontSize: '18px',
-    lineHeight: '22px',
-    letterSpacing: '-0.35px',
-  },
-  subtitle3: {
-    fontSize: '16px',
-    lineHeight: '20px',
-    letterSpacing: '-0.30px',
-  },
-  button: {
-    fontSize: '16px',
-    letterSpacing: '-0.2px',
-    textTransform: 'none',
-    fontWeight: '500',
-  },
-  weights: {
-    light: '300',
-    regular: '400',
-    medium: '500',
-    semibold: '600',
-    bold: '700',
-  },
 };
 
 export interface Theme {
-  readonly colors: ThemeProperty;
+  readonly colors: ColorsProps;
   readonly spacing: ThemeProperty;
   readonly borderRadius: ThemeProperty;
-  readonly typography: ThemeProperty;
+  readonly typography: TypographyProps;
+  readonly transitions: ThemeProperty;
   readonly space: number[];
 
   readonly [prop: string]: any;
@@ -155,5 +144,6 @@ export const theme: Theme = {
   spacing,
   borderRadius,
   typography,
+  transitions,
   space: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
 };

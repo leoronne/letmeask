@@ -11,5 +11,6 @@ export const typography = createAccessor<ThemeProperty>('typography');
 export const colors = createAccessor<ThemeProperty>('colors');
 export const spacing = createAccessor<ThemeProperty>('spacing');
 export const borderRadius = createAccessor<ThemeProperty>('borderRadius');
+export const transitions = createAccessor<ThemeProperty>('transitions');
 
 export * from './theme';

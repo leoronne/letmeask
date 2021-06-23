@@ -3,7 +3,15 @@ interface ColorsProps {
     base: string;
     text: string;
   };
+  secondary: {
+    base: string;
+    text: string;
+  };
   danger: {
+    base: string;
+    text: string;
+  };
+  disabled: {
     base: string;
     text: string;
   };
@@ -12,7 +20,10 @@ interface ColorsProps {
     '90': string;
     '80': string;
     '70': string;
+    '60': string;
     '50': string;
+    '40': string;
+    '30': string;
     '24': string;
     '12': string;
     '08': string;
@@ -22,26 +33,64 @@ interface ColorsProps {
     '90': string;
     '80': string;
     '70': string;
+    '60': string;
     '50': string;
+    '40': string;
+    '30': string;
     '24': string;
     '12': string;
     '08': string;
   };
 }
 
+interface TypographyProps {
+  heading1: {
+    [key: string]: string | number;
+  };
+  heading2: {
+    [key: string]: string | number;
+  };
+  heading3: {
+    [key: string]: string | number;
+  };
+  heading6: {
+    [key: string]: string | number;
+  };
+  title: {
+    [key: string]: string | number;
+  };
+}
+
 interface ThemeProps {
   theme: {
+    borderRadius: {
+      small: string;
+      base: string;
+      large: string;
+      extraLarge: string;
+    };
     colors: ColorsProps;
-    typography: {
-      heading1: {
-        [key: string]: string | number;
-      };
-      heading6: {
-        [key: string]: string | number;
-      };
-      title: {
-        [key: string]: string | number;
+    spacing: {
+      '1': string;
+      '2': string;
+      '3': string;
+      '4': string;
+      '5': string;
+      '6': string;
+      '7': string;
+      '8': string;
+      '9': string;
+      '10': string;
+      small: string;
+      extraSmall: string;
+    };
+    transitions: {
+      easeInOut: {
+        slow: string;
+        base: string;
+        fast: string;
       };
     };
+    typography: TypographyProps;
   };
 }

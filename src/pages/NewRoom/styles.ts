@@ -45,3 +45,9 @@ export const Form = styled.form`
 
   height: 132px;
 `;
+
+export const Title = styled.h3<ThemeProps>`
+  ${({ theme }: ThemeProps) => theme.typography.heading3};
+  color: ${({ theme }: ThemeProps) => theme.colors.black.base};
+    padding: ${({ theme }: ThemeProps) => theme.spacing[4]} 0;
+`;

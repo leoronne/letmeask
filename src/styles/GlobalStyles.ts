@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+export default createGlobalStyle<ThemeProps>`
   * {
     margin: 0;
     padding: 0;
@@ -14,6 +14,12 @@ export default createGlobalStyle`
 
   *, button, input {
     font-family: Roboto, sans-serif;
+    outline: none !important;
+  }
+
+  body {
+    background: ${({ theme }: ThemeProps) => theme.colors.white[70]};
+    color: ${({ theme }: ThemeProps) => theme.colors.black.base};
   }
 
   :root {
@@ -40,34 +46,13 @@ export default createGlobalStyle`
   }
 
   a {
-    transition: filter 0.6s ease !important;
+    transition: filter ${({ theme }: ThemeProps) => theme.transitions.easeInOut.base};
     outline: none;
   }
 
   a:hover{
-    transition: filter 0.6s ease !important;
+    transition: filter ${({ theme }: ThemeProps) => theme.transitions.easeInOut.base};
     filter: brightness(1.2);
     outline: none;
   }
-
-  button {
-    transition: 0.6s ease !important;
-    outline: none;
-  }
-
-  button:hover{
-    transition: 0.6s ease !important;
-    outline: none;
-  }
-
-  input {
-    transition: 0.7s !important;
-    outline: none !important;
-  }
-
-  input:focus {
-    outline: none !important;
-    transition: 0.7s !important;
-  }
-
 `;
