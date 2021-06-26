@@ -18,12 +18,8 @@ export default createGlobalStyle<ThemeProps>`
   }
 
   body {
-    background: ${({ theme }: ThemeProps) => theme.colors.white[70]};
+    background: ${({ theme }: ThemeProps) => theme.colors.background.base};
     color: ${({ theme }: ThemeProps) => theme.colors.black.base};
-  }
-
-  :root {
-    --color-primary: #835AFD;
   }
 
   ::-webkit-scrollbar {
@@ -48,6 +44,9 @@ export default createGlobalStyle<ThemeProps>`
   a {
     transition: filter ${({ theme }: ThemeProps) => theme.transitions.easeInOut.base};
     outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   a:hover{

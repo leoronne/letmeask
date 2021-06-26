@@ -6,6 +6,7 @@ import { Button } from '@material-ui/core';
 interface ButtonProps extends ThemeProps, ButtonHTMLAttributes<HTMLButtonElement> {
   width?: number;
   min_width?: string;
+  max_width?: string;
   height?: number;
   color_scheme?: {
     accent: string;
@@ -21,14 +22,15 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
     flex-direction: column;
 
     background: transparent;
-    color: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.accent : theme.colors.primary.base)};
+    color: ${({ color_scheme, theme }: ButtonProps) =>
+      color_scheme ? color_scheme.accent : theme.colors.primary.base};
     border: 2px solid
       ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.accent : theme.colors.primary.base)};
 
     text-transform: none;
     font-weight: 500;
     cursor: pointer;
-    box-shadow: 0px 4px 4px ${(props: ButtonProps) => props.theme.colors.black[12]};
+    box-shadow: 0px 2px 12px ${({ theme }: ButtonProps) => theme.colors.black[12]};
 
     height: ${({ height }: ButtonProps) => height || 50}px;
     width: ${({ width }: ButtonProps) => (width ? `${width}px` : 'max-content')};
@@ -45,6 +47,10 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
       margin-left: ${({ theme }: ButtonProps) => theme.spacing[2]};
     }
 
+    div + p {
+      margin-left: ${({ theme }: ButtonProps) => theme.spacing[2]};
+    }
+
     span,
     svg,
     p {
@@ -55,11 +61,13 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
       background: ${({ color_scheme, theme }: ButtonProps) =>
         color_scheme ? color_scheme.accent : theme.colors.primary.base};
       transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
+      border-color: transparent;
 
       p,
       svg {
         transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
-        color: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.text : theme.colors.white.base)};
+        color: ${({ color_scheme, theme }: ButtonProps) =>
+          color_scheme ? color_scheme.text : theme.colors.white.base};
         fill: ${({ color_scheme, theme }: ButtonProps) => (color_scheme ? color_scheme.text : theme.colors.white.base)};
       }
 
@@ -69,12 +77,28 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
     }
 
     &:disabled {
-      color: ${(props: ThemeProps) => props.theme.colors.disabled.base};
-      border: 2px solid ${(props: ThemeProps) => props.theme.colors.disabled.base};
+      transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
+      background: ${({ theme }: ThemeProps) => theme.colors.disabled.base};
+      border: 2px solid ${({ theme }: ThemeProps) => theme.colors.black['12']};
+      box-shadow: 0px 2px 12px ${({ theme }: ButtonProps) => theme.colors.black['08']};
       cursor: not-allowed;
+
       span,
+      p,
+      svg {
+        transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
+        color: ${({ theme }: ThemeProps) => theme.colors.disabled.text} !important;
+      }
+    }
+  }
+
+  @media (max-width: 596px) {
+    &.MuiButtonBase-root {
       p {
-        color: ${(props: ThemeProps) => props.theme.colors.disabled.base} !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: ${({ max_width }: ButtonProps) => max_width || '100px'};
       }
     }
   }

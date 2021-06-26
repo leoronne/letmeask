@@ -1,14 +1,17 @@
-import { createContext, ReactNode, useEffect, useState, useContext } from 'react';
+import { createContext, ReactNode, useEffect, useState, useContext, useCallback } from 'react';
+import { useSnackbar } from 'notistack';
+
 import { auth, firebase } from '../services/firebase';
 
-type User = {
+export interface User {
   id: string;
   name: string;
   avatar: string;
-};
+}
 
 interface AuthContextProps {
   user?: User;
+  loadingAuth: boolean;
   signInWithGoogle(): Promise<void>;
 }
 
@@ -19,35 +22,16 @@ interface Props {
 const AuthContext = createContext({} as AuthContextProps);
 
 function AuthProvider({ children }: Props) {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [user, setUser] = useState<User>();
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(usr => {
-      if (usr) {
-        const { displayName, photoURL, uid } = usr;
-
-        if (!displayName || !photoURL) {
-          throw new Error('Missing information from Google Account.');
-        }
-
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL,
-        });
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  const [loadingAuth, setLoadingAuth] = useState<boolean>(true);
 
   const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
 
-    if (result.user) {
+    if (result?.user) {
       const { displayName, photoURL, uid } = result.user;
 
       if (!displayName || !photoURL) {
@@ -62,7 +46,41 @@ function AuthProvider({ children }: Props) {
     }
   };
 
-  return <AuthContext.Provider value={{ user, signInWithGoogle }}>{children}</AuthContext.Provider>;
+  const getUser = useCallback(async () => {
+    try {
+      setLoadingAuth(true);
+      await auth.onAuthStateChanged(
+        usr => {
+          if (usr) {
+            const { displayName, photoURL, uid } = usr;
+
+            if (!displayName || !photoURL) {
+              throw new Error('Missing information from Google Account.');
+            }
+
+            setUser({
+              id: uid,
+              name: displayName,
+              avatar: photoURL,
+            });
+          }
+          setLoadingAuth(false);
+        },
+        err => {
+          throw new Error(err.message);
+        }
+      );
+    } catch (err) {
+      enqueueSnackbar(err?.response?.data?.error || err.message, { variant: 'error' });
+      setLoadingAuth(false);
+    }
+  }, [enqueueSnackbar]);
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
+
+  return <AuthContext.Provider value={{ user, signInWithGoogle, loadingAuth }}>{children}</AuthContext.Provider>;
 }
 
 const useAuth = (): AuthContextProps => {

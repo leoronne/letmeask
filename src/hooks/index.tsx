@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { AuthProvider, useAuth } from './useAuth';
+import { useRoom } from './useRoom';
 
 interface Props {
   children: ReactNode;
@@ -10,4 +11,4 @@ function HooksProvider({ children }: Props) {
 }
 
 export default HooksProvider;
-export { useAuth };
+export { useAuth, useRoom };

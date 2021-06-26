@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import { RouteProps as ReactDOMRouteProps, Route as ReactDOMRoute } from 'react-router-dom';
 
-import { Auth } from '../layouts';
+import { Auth, Room } from '../layouts';
 
 interface RouteWrapperProps extends ReactDOMRouteProps {
   component: React.ComponentType;
@@ -15,7 +15,7 @@ interface LayoutProps {
 
 function Route({ component: Component, layout, ...rest }: RouteWrapperProps) {
   const Layout = ({ children }: LayoutProps) => {
-    return layout === 'auth' ? <Auth>{children}</Auth> : <></>;
+    return layout === 'auth' ? <Auth>{children}</Auth> : <Room>{children}</Room>;
   };
 
   return (

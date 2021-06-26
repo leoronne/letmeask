@@ -32,16 +32,6 @@ export const Content = styled.div`
     border-radius: ${({ theme }: ThemeProps) => theme.borderRadius.large};
 
     background: ${({ theme }: ThemeProps) => theme.colors.white.base};
-    box-shadow: 0px 4px 4px ${(props: ThemeProps) => props.theme.colors.black[50]};
+    box-shadow: 0px 2px 12px ${(props: ThemeProps) => props.theme.colors.black[50]};
   }
-`;
-
-export const Form = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-
-  height: 132px;
 `;

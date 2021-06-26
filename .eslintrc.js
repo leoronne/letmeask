@@ -29,6 +29,7 @@ module.exports = {
     'camelcase': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'prettier/prettier': 'off',

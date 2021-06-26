@@ -2,10 +2,30 @@ interface ColorsProps {
   primary: {
     base: string;
     text: string;
+    '90': string;
+    '80': string;
+    '70': string;
+    '60': string;
+    '50': string;
+    '40': string;
+    '30': string;
+    '24': string;
+    '12': string;
+    '08': string;
   };
   secondary: {
     base: string;
     text: string;
+    '90': string;
+    '80': string;
+    '70': string;
+    '60': string;
+    '50': string;
+    '40': string;
+    '30': string;
+    '24': string;
+    '12': string;
+    '08': string;
   };
   danger: {
     base: string;
@@ -14,6 +34,9 @@ interface ColorsProps {
   disabled: {
     base: string;
     text: string;
+  };
+  background: {
+    base: string;
   };
   black: {
     base: string;
@@ -53,37 +76,44 @@ interface TypographyProps {
   heading3: {
     [key: string]: string | number;
   };
+  heading4: {
+    [key: string]: string | number;
+  };
   heading6: {
     [key: string]: string | number;
   };
-  title: {
+  caption1: {
     [key: string]: string | number;
   };
 }
 
+interface SpacingProps {
+  '1': string;
+  '2': string;
+  '3': string;
+  '4': string;
+  '5': string;
+  '6': string;
+  '7': string;
+  '8': string;
+  '9': string;
+  '10': string;
+  small: string;
+  extraSmall: string;
+}
+
+interface BorderRadiusProps {
+  small: string;
+  base: string;
+  large: string;
+  extraLarge: string;
+}
+
 interface ThemeProps {
   theme: {
-    borderRadius: {
-      small: string;
-      base: string;
-      large: string;
-      extraLarge: string;
-    };
+    borderRadius: BorderRadiusProps;
     colors: ColorsProps;
-    spacing: {
-      '1': string;
-      '2': string;
-      '3': string;
-      '4': string;
-      '5': string;
-      '6': string;
-      '7': string;
-      '8': string;
-      '9': string;
-      '10': string;
-      small: string;
-      extraSmall: string;
-    };
+    spacing: SpacingProps;
     transitions: {
       easeInOut: {
         slow: string;
@@ -92,5 +122,38 @@ interface ThemeProps {
       };
     };
     typography: TypographyProps;
+  };
+}
+
+interface Question {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  content: string;
+  isAnswered: boolean;
+  isHighlighted: boolean;
+  likeCount: number;
+  hasLiked: boolean;
+  likeId: string | undefined;
+  createdAt: string;
+}
+
+interface FirabaseQuestions {
+  [key: string]: {
+    author: {
+      name: string;
+      avatar: string;
+    };
+    content: string;
+    isAnswered: boolean;
+    isHighlighted: boolean;
+    likes?: {
+      [key: string]: {
+        authorId: string;
+      };
+    };
+    createdAt: string;
   };
 }

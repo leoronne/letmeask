@@ -13,7 +13,7 @@ export interface LiteralObject {
 
 export type ThemeProperty = Record<string, any>;
 
-const colors: ColorsProps = {
+export const colors: ColorsProps = {
   black: {
     base: baseBlack,
     '90': 'rgba(53, 65, 77, 0.9)',
@@ -43,12 +43,32 @@ const colors: ColorsProps = {
   },
 
   primary: {
-    base: '#835AFD',
+    base: 'rgba(131, 90, 253, 1)',
+    '90': 'rgba(131, 90, 253, 0.9)',
+    '80': 'rgba(131, 90, 253, 0.8)',
+    '70': 'rgba(131, 90, 253, 0.7)',
+    '60': 'rgba(131, 90, 253, 0.6)',
+    '50': 'rgba(131, 90, 253, 0.56)',
+    '40': 'rgba(131, 90, 253, 0.40)',
+    '30': 'rgba(131, 90, 253, 0.30)',
+    '24': 'rgba(131, 90, 253, 0.24)',
+    '12': 'rgba(131, 90, 253, 0.12)',
+    '08': 'rgba(131, 90, 253, 0.08)',
     text: textColorLight,
   },
 
   secondary: {
-    base: '#ff59f8',
+    base: 'rgba(255, 89, 248, 1)',
+    '90': 'rgba(255, 89, 248, 0.9)',
+    '80': 'rgba(255, 89, 248, 0.8)',
+    '70': 'rgba(255, 89, 248, 0.7)',
+    '60': 'rgba(255, 89, 248, 0.6)',
+    '50': 'rgba(255, 89, 248, 0.56)',
+    '40': 'rgba(255, 89, 248, 0.40)',
+    '30': 'rgba(255, 89, 248, 0.30)',
+    '24': 'rgba(255, 89, 248, 0.24)',
+    '12': 'rgba(255, 89, 248, 0.12)',
+    '08': 'rgba(255, 89, 248, 0.08)',
     text: textColorLight,
   },
 
@@ -57,21 +77,25 @@ const colors: ColorsProps = {
     text: '#FFFFFF',
   },
 
+  background: {
+    base: 'rgb(248 248 248)',
+  },
+
   disabled: {
     base: 'rgba(255, 255, 255, 0.24)',
-    text: '#FFFFFF',
+    text: 'rgba(53, 65, 77, 0.5)',
   },
 };
 
-const transitions: ThemeProperty = {
+export const transitions: ThemeProperty = {
   easeInOut: {
     slow: '0.9s ease-in-out',
     base: '0.6s ease-in-out',
     fast: '0.3s ease-in-out',
-  }
-}
+  },
+};
 
-const spacing: ThemeProperty = {
+export const spacing: SpacingProps = {
   '1': `${unit}px`,
   '2': `${unit * 2}px`,
   '3': `${unit * 3}px`,
@@ -86,14 +110,14 @@ const spacing: ThemeProperty = {
   extraSmall: `${unit / 2 / 2}px`,
 };
 
-const borderRadius: ThemeProperty = {
+export const borderRadius: BorderRadiusProps = {
   small: '4px',
   base: '8px',
   large: '16px',
-  extraLarge: '24px',
+  extraLarge: '32px',
 };
 
-const typography: TypographyProps = {
+export const typography: TypographyProps = {
   heading1: {
     fontFamily: `Poppins, Roboto, sans-serif`,
     fontSize: '36px',
@@ -115,23 +139,29 @@ const typography: TypographyProps = {
     lineHeight: '36px',
     padding: `${spacing['2']} 0`,
   },
-  heading6: {
-    fontSize: '24px',
-    fontWeight: '400',
-    lineHeight: '32px',
-  },
-  title: {
-    fontSize: '1.5rem',
+  heading4: {
+    fontFamily: `Poppins, Roboto, sans-serif`,
+    fontSize: '20px',
     fontWeight: '500',
-    lineHeight: 'unset',
-    letterSpacing: 'unset',
+    lineHeight: '30px',
+    padding: `${spacing['2']} 0`,
+  },
+  heading6: {
+    fontSize: '18px',
+    fontWeight: '500',
+    lineHeight: '24px',
+  },
+  caption1: {
+    fontWeight: '500',
+    fontSize: '14px',
+    lineHeight: ' 16px',
   },
 };
 
 export interface Theme {
   readonly colors: ColorsProps;
-  readonly spacing: ThemeProperty;
-  readonly borderRadius: ThemeProperty;
+  readonly spacing: SpacingProps;
+  readonly borderRadius: BorderRadiusProps;
   readonly typography: TypographyProps;
   readonly transitions: ThemeProperty;
   readonly space: number[];

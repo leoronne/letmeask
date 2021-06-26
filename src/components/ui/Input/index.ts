@@ -12,10 +12,20 @@ export const Input = styled(TextField)<InputProps>`
   transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
   color: ${({ theme }: InputProps) => theme.colors.primary.base};
 
+  &:hover label {
+    color: ${({ theme }: InputProps) => theme.colors.primary.base};
+  }
+
   .MuiInputBase-root {
     border-radius: ${({ theme }: InputProps) => theme.borderRadius.base};
     height: ${({ height }: InputProps) => height || 50}px;
     transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
+
+    textarea {
+      min-height: ${({ height }: InputProps) => height || 50}px;
+      max-height: ${({ height }: InputProps) => height || 50}px;
+      overflow-y: auto !important;
+    }
   }
 
   .MuiOutlinedInput-root {
@@ -71,12 +81,17 @@ export const Input = styled(TextField)<InputProps>`
   }
 
   .MuiInputLabel-outlined {
-    margin-top: -3px;
     transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
   }
 
   & label.Mui-focused {
+    margin-top: -5px;
     color: ${({ theme }: InputProps) => theme.colors.primary.base};
+    transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
+  }
+
+  & label.MuiFormLabel-filled {
+    margin-top: -5px;
     transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
   }
 `;
