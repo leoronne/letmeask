@@ -85,6 +85,9 @@ interface TypographyProps {
   caption1: {
     [key: string]: string | number;
   };
+  caption2: {
+    [key: string]: string | number;
+  };
 }
 
 interface SpacingProps {

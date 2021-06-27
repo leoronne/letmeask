@@ -8,8 +8,8 @@ import DeleteButton from './DeleteButton';
 import LikeButton from './LikeButton';
 
 import * as Icons from '../../components/ui/Icons';
-import { Breadcrumb, FlexContainer, LoaderSpinner } from '../../components/ui';
-import { Question, Header } from '../../components/application';
+import { Breadcrumb, FlexContainer, LoaderSpinner, Tooltip } from '../../components/ui';
+import { Question, RoomHeader } from '../../components/application';
 
 import { useAuth, useRoom } from '../../hooks';
 
@@ -53,11 +53,13 @@ function Room() {
   return (
     <Fade in timeout={500} disableStrictModeCompat>
       <Styles.Container>
-        <Header id={roomId} admin={isAdmin} />
+        <RoomHeader id={roomId} admin={isAdmin} user={user} roomTitle={currentRoom?.title} />
 
         <Styles.Main height={questions.length === 0 ? '100%' : 'auto'}>
           <Styles.RoomTitle>
-            <Styles.Title>{`Sala ${currentRoom?.title}`}</Styles.Title>
+            <Tooltip title={String(currentRoom?.title)} placement="right" arrow>
+              <Styles.Title>{`Sala ${currentRoom?.title}`}</Styles.Title>
+            </Tooltip>
             {questions.length > 0 && <Breadcrumb>{kFormatter(questions.length)} perguntas</Breadcrumb>}
           </Styles.RoomTitle>
 

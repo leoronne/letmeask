@@ -11,6 +11,7 @@ import {
   ModalContent,
   ModalContentSubtitle,
   ModalContentTitle,
+  Tooltip,
 } from '../../../components/ui';
 
 import { database } from '../../../services/firebase';
@@ -49,17 +50,19 @@ function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
 
   return (
     <>
-      <IconButton
-        aria-label="Excluir pergunta"
-        border_radius={borderRadius.extraLarge}
-        padding={6}
-        width="32px"
-        height={32}
-        onClick={() => setModalOpen(true)}
-        disabled={loading}
-      >
-        <Icons.DeleteIcon width={15} height={15} fill={colors.black[40]} />
-      </IconButton>
+      <Tooltip title="Excluir pergunta" placement="bottom" arrow>
+        <IconButton
+          aria-label="Excluir pergunta"
+          border_radius={borderRadius.extraLarge}
+          padding={6}
+          width="32px"
+          height={32}
+          onClick={() => setModalOpen(true)}
+          disabled={loading}
+        >
+          <Icons.DeleteIcon width={15} height={15} fill={colors.black[40]} />
+        </IconButton>
+      </Tooltip>
       <Modal isOpen={modalOpen} setOpen={() => setModalOpen(!modalOpen)} maxWidth="xs">
         <>
           <ModalContent>

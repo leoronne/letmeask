@@ -18,8 +18,8 @@ function App() {
         autoHideDuration={1800}
         maxSnack={3}
         anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
         action={key => <SnackBarCloseButton key={key} />}
       >

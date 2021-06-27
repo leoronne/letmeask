@@ -78,8 +78,8 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
 
     &:disabled {
       transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
-      background: ${({ theme }: ThemeProps) => theme.colors.disabled.base};
-      border: 2px solid ${({ theme }: ThemeProps) => theme.colors.black['12']};
+      background: ${({ theme }: ButtonProps) => theme.colors.disabled.base};
+      border: 2px solid ${({ theme }: ButtonProps) => theme.colors.black['12']};
       box-shadow: 0px 2px 12px ${({ theme }: ButtonProps) => theme.colors.black['08']};
       cursor: not-allowed;
 
@@ -87,7 +87,7 @@ export const ButtonOutlined = styled(Button)<ButtonProps>`
       p,
       svg {
         transition: ${({ theme }: ButtonProps) => theme.transitions.easeInOut.base};
-        color: ${({ theme }: ThemeProps) => theme.colors.disabled.text} !important;
+        color: ${({ theme }: ButtonProps) => theme.colors.disabled.text} !important;
       }
     }
   }

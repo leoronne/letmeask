@@ -156,6 +156,11 @@ export const typography: TypographyProps = {
     fontSize: '14px',
     lineHeight: ' 16px',
   },
+  caption2: {
+    fontWeight: '500',
+    fontSize: '12px',
+    lineHeight: ' 14px',
+  },
 };
 
 export interface Theme {

@@ -1,7 +1,7 @@
 import { useSnackbar } from 'notistack';
 
 import * as Icons from '../../../components/ui/Icons';
-import { IconButton } from '../../../components/ui';
+import { IconButton, Tooltip } from '../../../components/ui';
 
 import { database } from '../../../services/firebase';
 
@@ -38,16 +38,18 @@ function AnsweredQuestion({ roomId, questionId, answered }: AnsweredQuestionProp
   };
 
   return (
-    <IconButton
-      aria-label="Marcar como respondida"
-      border_radius={borderRadius.extraLarge}
-      padding={6}
-      width="32px"
-      height={32}
-      onClick={() => handleCheckQuestionAsAnswered()}
-    >
-      <Icons.AnsweredIcon width={15} height={15} fill={answered ? colors.secondary.base : colors.black[40]} />
-    </IconButton>
+    <Tooltip title="Marcar como respondida" placement="bottom" arrow>
+      <IconButton
+        aria-label="Marcar como respondida"
+        border_radius={borderRadius.extraLarge}
+        padding={6}
+        width="32px"
+        height={32}
+        onClick={() => handleCheckQuestionAsAnswered()}
+      >
+        <Icons.AnsweredIcon width={15} height={15} fill={answered ? colors.secondary.base : colors.black[40]} />
+      </IconButton>
+    </Tooltip>
   );
 }
 

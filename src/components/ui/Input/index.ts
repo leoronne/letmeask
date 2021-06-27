@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { TextField } from '@material-ui/core';
+import { TextField, InputAdornment as InputAdornmentMUI } from '@material-ui/core';
 
 interface InputProps extends ThemeProps, InputHTMLAttributes<HTMLInputElement> {
   height?: number;
@@ -93,5 +93,27 @@ export const Input = styled(TextField)<InputProps>`
   & label.MuiFormLabel-filled {
     margin-top: -5px;
     transition: ${({ theme }: InputProps) => theme.transitions.easeInOut.base};
+  }
+`;
+
+interface InputAdornmentProps extends ThemeProps {
+  height?: number;
+}
+
+export const InputAdornment = styled(InputAdornmentMUI)<InputAdornmentProps>`
+  &.MuiInputAdornment-root {
+    height: ${({ height }: InputAdornmentProps) => height || 50}px;
+    cursor: pointer;
+    margin-right: ${({ theme }: InputAdornmentProps) => theme.spacing[2]};
+    transition: ${({ theme }: InputAdornmentProps) => theme.transitions.easeInOut.base};
+
+    svg {
+      transition: ${({ theme }: InputAdornmentProps) => theme.transitions.easeInOut.base};
+    }
+
+    &:hover svg {
+      transition: ${({ theme }: InputAdornmentProps) => theme.transitions.easeInOut.base};
+      fill: ${({ theme }: InputAdornmentProps) => theme.colors.primary.base};
+    }
   }
 `;

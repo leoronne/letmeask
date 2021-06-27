@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
 
-export const Container = styled.div``;
-
 export const Modal = styled(Dialog)<ThemeProps>`
   .MuiDialog-paper {
     border-radius: ${({ theme }: ThemeProps) => theme.borderRadius.large};
   }
 `;
+
 export const Content = styled(DialogContent)<ThemeProps>`
   &.MuiDialogContent-root {
     padding-bottom: ${({ theme }: ThemeProps) => theme.spacing[4]};
@@ -27,7 +26,7 @@ export const Title = styled.h3<ThemeProps>`
   ${({ theme }: ThemeProps) => theme.typography.heading3}
   color: ${({ theme }: ThemeProps) => theme.colors.black.base};
   padding: 0;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 export const ModalContent = styled.div<ThemeProps>`
@@ -44,7 +43,7 @@ export const ModalContentTitle = styled.h2<ThemeProps>`
   ${({ theme }: ThemeProps) => theme.typography.heading2}
   color: ${({ theme }: ThemeProps) => theme.colors.black.base};
   padding: 0;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 export const ModalContentSubtitle = styled.span<ThemeProps>`

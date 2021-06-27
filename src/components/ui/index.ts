@@ -1,11 +1,15 @@
 export { Separator } from './Separator';
 export { ButtonOutlined } from './Button';
-export { Input } from './Input';
+export { Input, InputAdornment } from './Input';
 export { Link } from './Link';
 export { Form } from './Form';
 export { FlexContainer } from './FlexContainer';
 export { IconButton } from './IconButton';
 export { Breadcrumb } from './Breadcrumb';
+export { Tooltip } from './Tooltip';
 export { ModalContent, ModalContentTitle, ModalContentSubtitle, ModalActions } from './Modal/styles';
+export { MenuItem, ListItemIcon } from './DropdownMenu/styles';
 export { default as Modal } from './Modal';
+export { default as DropdownMenu } from './DropdownMenu';
+export { default as AnimatedCheck } from './AnimatedCheck';
 export { default as LoaderSpinner } from './LoaderSpinner';
