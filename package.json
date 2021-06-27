@@ -1,6 +1,6 @@
 {
   "name": "letmeask",
-  "description": "This application was idealized by @Rocketseat's Next Level Week #6 - Together.",
+  "description": "Let Me Ask lets you create real-time Q&A rooms, firstly idealized by @Rocketseat's Next Level Week #6 - Together.",
   "version": "1.0.0",
   "main": "index.tsx",
   "repository": "https://github.com/leoronne/letmeask",
