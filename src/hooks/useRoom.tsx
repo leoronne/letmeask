@@ -5,6 +5,7 @@ import { useSnackbar } from 'notistack';
 import { database } from '../services/firebase';
 
 import { useAuth } from './useAuth';
+import { useLanguage } from './useLanguage';
 
 interface Room {
   authorId: string;
@@ -16,7 +17,9 @@ interface Room {
 export function useRoom(roomId: string) {
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
+
   const { user } = useAuth();
+  const { translate } = useLanguage();
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentRoom, setCurrentRoom] = useState<Room>();
@@ -74,7 +77,7 @@ export function useRoom(roomId: string) {
         () => {
           setQuestions([]);
           setLoadingRooms(false);
-          enqueueSnackbar('Sala encerrada ou não encontrada', { variant: 'error', preventDuplicate: true });
+          enqueueSnackbar(translate('invalid-room'), { variant: 'error', preventDuplicate: true });
           history.push('/');
         }
       );
@@ -85,7 +88,7 @@ export function useRoom(roomId: string) {
     } catch (err) {
       enqueueSnackbar(err?.response?.data?.error || err.message, { variant: 'error' });
     }
-  }, [roomId, user, enqueueSnackbar, history]);
+  }, [roomId, user, enqueueSnackbar, history, translate]);
 
   useEffect(() => {
     getQuestions();

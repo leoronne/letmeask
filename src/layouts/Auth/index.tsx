@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Fade } from '@material-ui/core';
 
-import { useAuth } from '../../hooks';
+import { useAuth, useLanguage } from '../../hooks';
 
 import { LoaderSpinner, FlexContainer } from '../../components/ui';
 
@@ -13,13 +13,15 @@ interface Props {
 
 function Auth({ children }: Props) {
   const { loadingAuth } = useAuth();
+  const { translate } = useLanguage();
+
   return (
     <Fade in timeout={500}>
       <Styles.Container>
         <Styles.Aside>
           <Styles.HomeIllustration />
-          <Styles.Title>Toda pergunta tem uma resposta.</Styles.Title>
-          <Styles.Subtitle>Aprenda e compartilhe conhecimento com outras pessoas</Styles.Subtitle>
+          <Styles.Title>{translate('home-title-1')}</Styles.Title>
+          <Styles.Subtitle>{translate('home-title-2')}</Styles.Subtitle>
         </Styles.Aside>
         {loadingAuth ? (
           <FlexContainer height={0} flex={8}>

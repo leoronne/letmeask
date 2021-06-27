@@ -5,6 +5,8 @@ import { IconButton, Tooltip } from '../../../components/ui';
 
 import { database } from '../../../services/firebase';
 
+import { useLanguage } from '../../../hooks';
+
 import { colors, borderRadius } from '../../../styles/theme';
 
 interface HighlightQuestionProps {
@@ -15,6 +17,8 @@ interface HighlightQuestionProps {
 
 function HighlightQuestion({ roomId, questionId, highlighted }: HighlightQuestionProps) {
   const { enqueueSnackbar } = useSnackbar();
+
+  const { translate } = useLanguage();
 
   const handleHighlightQuestion = async () => {
     try {
@@ -38,9 +42,9 @@ function HighlightQuestion({ roomId, questionId, highlighted }: HighlightQuestio
   };
 
   return (
-    <Tooltip title="Destacar pergunta" placement="bottom" arrow>
+    <Tooltip title={highlighted ? translate('undo') : translate('highlight-question')} placement="bottom" arrow>
       <IconButton
-        aria-label="Destacar pergunta"
+        aria-label={highlighted ? translate('undo') : translate('highlight-question')}
         border_radius={borderRadius.extraLarge}
         padding={6}
         width="32px"

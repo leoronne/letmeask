@@ -6,6 +6,7 @@ import * as Icons from '../../../components/ui/Icons';
 import { ButtonOutlined, Form, Input, LoaderSpinner } from '../../../components/ui';
 
 import { User } from '../../../hooks/useAuth';
+import { useLanguage } from '../../../hooks';
 
 import { database } from '../../../services/firebase';
 
@@ -20,6 +21,8 @@ interface QuestionFormProps {
 function QuestionForm({ user, roomId, signIn }: QuestionFormProps) {
   const { enqueueSnackbar } = useSnackbar();
 
+  const { translate } = useLanguage();
+
   const [newQuestion, setNewQuestion] = useState('');
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
 
@@ -27,12 +30,14 @@ function QuestionForm({ user, roomId, signIn }: QuestionFormProps) {
     try {
       e.preventDefault();
       setLoadingSubmit(true);
+
       if (newQuestion.trim() === '') {
+        setNewQuestion('');
         return;
       }
 
       if (!user) {
-        throw new Error('You must be logged in');
+        throw new Error(translate('must-be-logged'));
       }
 
       const question = {
@@ -69,7 +74,8 @@ function QuestionForm({ user, roomId, signIn }: QuestionFormProps) {
       <Input
         name="question"
         type="text"
-        label="O que você quer perguntar?"
+        label={translate('want-to-ask')}
+        aria-label={translate('want-to-ask')}
         value={newQuestion}
         variant="outlined"
         onChange={e => setNewQuestion(e.target.value)}
@@ -82,17 +88,22 @@ function QuestionForm({ user, roomId, signIn }: QuestionFormProps) {
           <UserInfo user={user} />
         ) : (
           <Styles.Authenticate>
-            Para enviar uma pergunta,{' '}
-            <Styles.AuthenticateButton type="button" onClick={handleSignIn}>
-              faça login
+            {`${translate('not-logged-send-question-1')}, `}
+            <Styles.AuthenticateButton type="button" aria-label={translate('must-be-logged')} onClick={handleSignIn}>
+              {translate('not-logged-send-question-2')}
             </Styles.AuthenticateButton>
             .
           </Styles.Authenticate>
         )}
 
-        <ButtonOutlined type="submit" disabled={!user || loadingSubmit || !newQuestion.trim()} max_width="max-content">
+        <ButtonOutlined
+          type="submit"
+          aria-label={translate('send-question')}
+          disabled={!user || loadingSubmit || !newQuestion.trim()}
+          max_width="max-content"
+        >
           {loadingSubmit ? <LoaderSpinner size={20} /> : <Icons.SendIcon />}
-          <p>Enviar pergunta</p>
+          <p>{translate('send-question')}</p>
         </ButtonOutlined>
       </Styles.FormFooter>
     </Form>

@@ -4,18 +4,21 @@ import { useSnackbar } from 'notistack';
 
 import * as Icons from '../../components/ui/Icons';
 import { ButtonOutlined, Separator, Input, Form, LoaderSpinner } from '../../components/ui';
-
-import { useAuth } from '../../hooks';
-
-import * as Styles from './styles';
-import { database } from '../../services/firebase';
 import { UserAvatar } from '../../components/application';
+
+import { database } from '../../services/firebase';
+
+import { useAuth, useLanguage } from '../../hooks';
+
 import { theme } from '../../styles/theme';
+import * as Styles from './styles';
 
 function Home() {
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+
   const { user, signInWithGoogle } = useAuth();
+  const { translate } = useLanguage();
 
   const [room, setRoom] = useState<string>('');
   const [loadingCreateRoom, setLoadingCreateRoom] = useState<boolean>(false);
@@ -45,9 +48,9 @@ function Home() {
 
       const roomRef = await database.ref(`rooms/${room}`).get();
 
-      if (!roomRef.exists()) throw new Error('Não encontramos nenhuma sala com este código');
+      if (!roomRef.exists()) throw new Error(translate('no-room'));
 
-      if (roomRef.val()?.endedAt) throw new Error('A sala já foi encerrada');
+      if (roomRef.val()?.endedAt) throw new Error(translate('room-has-ended'));
 
       history.push(`/rooms/${room}`);
     } catch (err) {
@@ -70,20 +73,22 @@ function Home() {
         </RouterLink>
         <ButtonOutlined
           type="button"
+          aria-label={translate('create-with-google')}
           color_scheme={{ accent: '#EA4335', text: '#fff' }}
           min_width="100%"
           onClick={() => handleCreateRoom()}
           disabled={loadingCreateRoom}
         >
           {loadingCreateRoom ? <LoaderSpinner size={20} /> : <ButtonLogo />}
-          <p>Crie sua sala com o Google</p>
+          <p>{translate('create-with-google')}</p>
         </ButtonOutlined>
-        <Separator>ou entre em uma sala</Separator>
+        <Separator>{translate('or-join-room')}</Separator>
         <Form onSubmit={handleJoinRoom}>
           <Input
             name="room"
             type="text"
-            label="Código da sala"
+            label={translate('room-code')}
+            aria-label={translate('room-code')}
             value={room}
             variant="outlined"
             onChange={e => {
@@ -91,9 +96,14 @@ function Home() {
             }}
             required
           />
-          <ButtonOutlined type="submit" min_width="100%" disabled={loadingJoinRoom}>
+          <ButtonOutlined
+            type="submit"
+            aria-label={translate('enter-room')}
+            min_width="100%"
+            disabled={loadingJoinRoom}
+          >
             {loadingJoinRoom ? <LoaderSpinner size={20} /> : <Icons.LoginIcon />}
-            <p>Entrar na sala</p>
+            <p>{translate('enter-room')}</p>
           </ButtonOutlined>
         </Form>
       </Styles.Content>

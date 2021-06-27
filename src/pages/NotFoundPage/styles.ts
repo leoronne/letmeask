@@ -24,6 +24,7 @@ export const Main = styled.main`
   );
 
   padding: ${({ theme }: ThemeProps) => theme.spacing[5]};
+  gap: ${({ theme }: ThemeProps) => theme.spacing[3]};
 
   justify-content: center;
 
@@ -54,8 +55,16 @@ export const Aside = styled.aside<ThemeProps>`
   flex-direction: column;
   color: ${({ theme }: ThemeProps) => theme.colors.white.base};
   gap: ${({ theme }: ThemeProps) => theme.spacing[3]};
+`;
+
+export const TextContent = styled.div<ThemeProps>`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: ${({ theme }: ThemeProps) => theme.spacing[2]};
 
   @media (max-width: 735px) {
+    align-items: center;
     text-align: center;
   }
 `;
@@ -76,7 +85,7 @@ export const Right = styled.div`
   background: no-repeat url(${error}) center right;
   background-size: contain;
   height: 100%;
-  width: 80%;
+  width: 75%;
   @media (max-width: 735px) {
     display: none;
   }

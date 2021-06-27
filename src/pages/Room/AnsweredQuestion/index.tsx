@@ -5,6 +5,8 @@ import { IconButton, Tooltip } from '../../../components/ui';
 
 import { database } from '../../../services/firebase';
 
+import { useLanguage } from '../../../hooks';
+
 import { colors, borderRadius } from '../../../styles/theme';
 
 interface AnsweredQuestionProps {
@@ -15,6 +17,8 @@ interface AnsweredQuestionProps {
 
 function AnsweredQuestion({ roomId, questionId, answered }: AnsweredQuestionProps) {
   const { enqueueSnackbar } = useSnackbar();
+
+  const { translate } = useLanguage();
 
   const handleCheckQuestionAsAnswered = async () => {
     try {
@@ -38,9 +42,9 @@ function AnsweredQuestion({ roomId, questionId, answered }: AnsweredQuestionProp
   };
 
   return (
-    <Tooltip title="Marcar como respondida" placement="bottom" arrow>
+    <Tooltip title={answered ? translate('mark-not-answered') : translate('mark-answered')} placement="bottom" arrow>
       <IconButton
-        aria-label="Marcar como respondida"
+        aria-label={answered ? translate('mark-not-answered') : translate('mark-answered')}
         border_radius={borderRadius.extraLarge}
         padding={6}
         width="32px"

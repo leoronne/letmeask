@@ -11,7 +11,7 @@ import * as Icons from '../../components/ui/Icons';
 import { Breadcrumb, FlexContainer, LoaderSpinner, Tooltip } from '../../components/ui';
 import { Question, RoomHeader } from '../../components/application';
 
-import { useAuth, useRoom } from '../../hooks';
+import { useAuth, useLanguage, useRoom } from '../../hooks';
 
 import kFormatter from '../../utils/kFormatter';
 
@@ -28,6 +28,8 @@ function Room() {
 
   const params = useParams<RoomParams>();
   const roomId = params?.id;
+
+  const { translate } = useLanguage();
 
   const { user, signInWithGoogle, loadingAuth } = useAuth();
   const { questions, currentRoom, loadingRoom } = useRoom(roomId);
@@ -46,7 +48,7 @@ function Room() {
   }
 
   if (!loadingRoom && (!currentRoom || currentRoom.endedAt) && currentRoom?.authorId !== user?.id) {
-    enqueueSnackbar('Sala encerrada ou não encontrada', { variant: 'error', preventDuplicate: true });
+    enqueueSnackbar(translate('invalid-room'), { variant: 'error', preventDuplicate: true });
     return <Redirect to="/" />;
   }
 
@@ -58,9 +60,13 @@ function Room() {
         <Styles.Main height={questions.length === 0 ? '100%' : 'auto'}>
           <Styles.RoomTitle>
             <Tooltip title={String(currentRoom?.title)} placement="right" arrow>
-              <Styles.Title>{`Sala ${currentRoom?.title}`}</Styles.Title>
+              <Styles.Title>{`${translate('room')} ${currentRoom?.title}`}</Styles.Title>
             </Tooltip>
-            {questions.length > 0 && <Breadcrumb>{kFormatter(questions.length)} perguntas</Breadcrumb>}
+            {questions.length > 0 && (
+              <Breadcrumb>{`${kFormatter(questions.length)} ${translate('question')}${
+                questions.length > 1 ? 's' : ''
+              }`}</Breadcrumb>
+            )}
           </Styles.RoomTitle>
 
           {!isAdmin && <QuestionForm user={user} roomId={roomId} signIn={signInWithGoogle} />}
@@ -68,7 +74,7 @@ function Room() {
           {questions.length === 0 ? (
             <Styles.NoQuestionsContainer>
               <Icons.EmptyQuestionsIcon width={150} height={150} />
-              <Styles.NoQuestionsTitle>Nenhuma pergunta por aqui...</Styles.NoQuestionsTitle>
+              <Styles.NoQuestionsTitle>{translate('no-questions-here')}</Styles.NoQuestionsTitle>
             </Styles.NoQuestionsContainer>
           ) : (
             questions.map(question => (

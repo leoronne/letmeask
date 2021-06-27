@@ -6,6 +6,7 @@ import { IconButton, Tooltip } from '../../../components/ui';
 import { database } from '../../../services/firebase';
 
 import { User } from '../../../hooks/useAuth';
+import { useLanguage } from '../../../hooks';
 
 import kFormatter from '../../../utils/kFormatter';
 
@@ -24,6 +25,8 @@ interface LikeButtonProps {
 function LikeButton({ user, liked, likes, roomId, questionId, likeId }: LikeButtonProps) {
   const { enqueueSnackbar } = useSnackbar();
 
+  const { translate } = useLanguage();
+
   const handleLikeQuestions = async () => {
     try {
       if (questionId.trim() === '') {
@@ -36,7 +39,7 @@ function LikeButton({ user, liked, likes, roomId, questionId, likeId }: LikeButt
       }
 
       if (!user) {
-        throw new Error('You must be logged in');
+        throw new Error(translate('must-be-logged'));
       }
 
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
@@ -48,9 +51,9 @@ function LikeButton({ user, liked, likes, roomId, questionId, likeId }: LikeButt
   };
 
   return (
-    <Tooltip title="Marcar como gostei" placement="bottom" arrow>
+    <Tooltip title={liked ? translate('mark-not-liked') : translate('mark-liked')} placement="bottom" arrow>
       <IconButton
-        aria-label="Marcar como gostei"
+        aria-label={liked ? translate('mark-not-liked') : translate('mark-liked')}
         border_radius={borderRadius.extraLarge}
         padding={6}
         width={likes > 0 ? 'max-content' : '32px'}

@@ -8,6 +8,7 @@ import * as Icons from '../../ui/Icons';
 import { DropdownMenu, ListItemIcon, MenuItem } from '../../ui';
 
 import { User } from '../../../hooks/useAuth';
+import { useLanguage } from '../../../hooks';
 
 import { colors } from '../../../styles/theme';
 import * as Styles from './styles';
@@ -21,6 +22,8 @@ interface Props {
 }
 
 function RoomHeader({ id, admin = false, user, roomTitle }: Props) {
+  const { translate, language, changeLanguage } = useLanguage();
+
   const [modalEndRoomOpen, setModalEndRoomOpen] = useState<boolean>(false);
   const [modalShareRoomOpen, setModalShareRoomOpen] = useState<boolean>(false);
 
@@ -50,13 +53,31 @@ function RoomHeader({ id, admin = false, user, roomTitle }: Props) {
               <ListItemIcon>
                 <Icons.ShareIcon width={20} height={20} fill={colors.primary.base} />
               </ListItemIcon>
-              <span>Compartilhar sala</span>
+              <span>{translate('share-room')}</span>
             </MenuItem>
             <MenuItem onClick={() => setModalEndRoomOpen(true)}>
               <ListItemIcon>
                 <Icons.CloseAllIcon width={20} height={20} fill={colors.danger.base} />
               </ListItemIcon>
-              <span>Encerrar sala</span>
+              <span>{translate('end-room')}</span>
+            </MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                {language === 'pt' ? (
+                  <Icons.BrazilIcon width={18} height={18} fill={colors.danger.base} />
+                ) : (
+                  <Icons.USAIcon width={18} height={18} fill={colors.danger.base} />
+                )}
+              </ListItemIcon>
+
+              <Styles.SelectInput value={language} onChange={e => changeLanguage(String(e.target.value))}>
+                <MenuItem value="en">
+                  <span>English (United States)</span>
+                </MenuItem>
+                <MenuItem className="select-item-with-margin" value="pt">
+                  <span>Português (Brasil)</span>
+                </MenuItem>
+              </Styles.SelectInput>
             </MenuItem>
           </DropdownMenu>
         </Styles.ButtonsContainer>

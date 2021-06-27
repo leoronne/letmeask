@@ -20,7 +20,7 @@ function Modal({ children, maxWidth = 'sm', isOpen, setOpen, title }: ModalProps
       <Styles.Header disableTypography>
         <Styles.Title>{title}</Styles.Title>
 
-        <IconButton aria-label="Marcar como gostei" padding={6} width="32px" height={32} onClick={() => setOpen(false)}>
+        <IconButton padding={6} width="32px" height={32} onClick={() => setOpen(false)}>
           <Icons.CloseIcon width={25} height={25} fill={colors.black[40]} />
         </IconButton>
       </Styles.Header>

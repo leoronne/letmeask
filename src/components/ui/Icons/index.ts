@@ -17,6 +17,8 @@ import { ReactComponent as LogoWhite } from '../../../assets/img/svg/logo-white.
 import { ReactComponent as Google } from '../../../assets/img/svg/google.svg';
 import { ReactComponent as Empty } from '../../../assets/img/svg/empty-questions.svg';
 import { ReactComponent as Check } from '../../../assets/img/svg/check-animated.svg';
+import { ReactComponent as Brazil } from '../../../assets/img/svg/brazil.svg';
+import { ReactComponent as USA } from '../../../assets/img/svg/usa.svg';
 
 interface IconProps {
   width?: number;
@@ -134,6 +136,15 @@ export const MailIcon = styled(MdEmail)<IconProps>`
 export const LinkIcon = styled(BiLink)<IconProps>`
   ${iconCSS}
 `;
+
+export const BrazilIcon = styled(Brazil)<IconProps>`
+  ${iconCSS}
+`;
+
+export const USAIcon = styled(USA)<IconProps>`
+  ${iconCSS}
+`;
+
 
 export const CheckAnimatedIcon = styled(Check)<IconProps>`
   width: ${({ width }: IconProps) => width || 20}px;

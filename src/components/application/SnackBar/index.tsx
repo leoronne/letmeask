@@ -1,8 +1,7 @@
 import { useSnackbar, SnackbarKey } from 'notistack';
 
+import { IconButton } from '../../ui';
 import { CloseIcon } from '../../ui/Icons';
-
-import * as Styles from './styles';
 
 interface Props {
   key?: SnackbarKey | undefined;
@@ -11,8 +10,8 @@ interface Props {
 export function CloseButton({ key }: Props) {
   const { closeSnackbar } = useSnackbar();
   return (
-    <Styles.Button onClick={() => closeSnackbar(key)} aria-label="Fechar notificação">
+    <IconButton type="button" onClick={() => closeSnackbar(key)}>
       <CloseIcon width={15} height={15} fill="#fff" />
-    </Styles.Button>
+    </IconButton>
   );
 }

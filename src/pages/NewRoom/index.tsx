@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
-import { useAuth } from '../../hooks';
+import { useAuth, useLanguage } from '../../hooks';
 
 import { database } from '../../services/firebase';
 
@@ -14,7 +14,9 @@ import * as Styles from './styles';
 function NewRoom() {
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+
   const { user } = useAuth();
+  const { translate } = useLanguage();
 
   const [room, setRoom] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -24,7 +26,10 @@ function NewRoom() {
       e.preventDefault();
       setLoading(true);
 
-      if (!room.trim()) return;
+      if (!room.trim()) {
+        setRoom('');
+        return;
+      }
 
       const roomRef = database.ref('rooms');
 
@@ -33,7 +38,7 @@ function NewRoom() {
         authorId: user?.id,
       });
 
-      enqueueSnackbar('Sala criada com sucesso', { variant: 'success' });
+      enqueueSnackbar(translate('room-created'), { variant: 'success' });
 
       history.push(`/rooms/${firebaseRoom.key}`);
     } catch (err) {
@@ -49,12 +54,13 @@ function NewRoom() {
         <RouterLink to="/">
           <Icons.LogoIcon width={150} height={71} />
         </RouterLink>
-        <Styles.Title>Crie uma nova sala</Styles.Title>
+        <Styles.Title>{translate('create-new-room')}</Styles.Title>
         <Form onSubmit={handleCreateRoom}>
           <Input
             name="room"
             type="text"
-            label="Nome da sala"
+            label={translate('room-name')}
+            aria-label={translate('room-name')}
             value={room}
             variant="outlined"
             onChange={e => {
@@ -63,14 +69,14 @@ function NewRoom() {
             maxLength={150}
             required
           />
-          <ButtonOutlined type="submit" min_width="100%" disabled={loading}>
+          <ButtonOutlined type="submit" aria-label={translate('create-room')} min_width="100%" disabled={loading}>
             {loading ? <LoaderSpinner size={20} /> : <Icons.CreateIcon />}
-            <p>Criar sala</p>
+            <p>{translate('create-room')}</p>
           </ButtonOutlined>
         </Form>
-        <Link to="/" margin_top={16}>
+        <Link to="/" margin_top={16} aria-label={translate('enter-existing-room')}>
           <Icons.LoginIcon width={16} height={16} />
-          Entrar em uma sala já existente
+          {translate('enter-existing-room')}
         </Link>
       </Styles.Content>
     </Styles.Main>

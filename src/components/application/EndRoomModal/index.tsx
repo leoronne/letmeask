@@ -15,6 +15,8 @@ import {
 
 import { database } from '../../../services/firebase';
 
+import { useLanguage } from '../../../hooks';
+
 import { colors } from '../../../styles/theme';
 
 interface EndRoomModalProps {
@@ -28,6 +30,8 @@ function EndRoomModal({ id, admin, open, setOpen }: EndRoomModalProps) {
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
 
+  const { translate } = useLanguage();
+
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleEndRoom = async () => {
@@ -38,13 +42,13 @@ function EndRoomModal({ id, admin, open, setOpen }: EndRoomModalProps) {
       }
 
       if (!admin) {
-        throw new Error('You must be the owner of the room to do this');
+        throw new Error(translate('must-be-owner'));
       }
 
       await database.ref(`rooms/${id}`).update({
         endedAt: Date.now(),
       });
-      enqueueSnackbar('Sala encerrada', { variant: 'success' });
+      enqueueSnackbar(translate('ended-room'), { variant: 'success' });
 
       setTimeout(() => history.push('/'), 500);
     } catch (err) {
@@ -66,29 +70,31 @@ function EndRoomModal({ id, admin, open, setOpen }: EndRoomModalProps) {
       <>
         <ModalContent>
           <Icons.CloseAllIcon fill={colors.danger.base} width={35} height={35} />
-          <ModalContentTitle>Encerrar sala</ModalContentTitle>
-          <ModalContentSubtitle>Tem certeza que você deseja encerrar esta sala?</ModalContentSubtitle>
+          <ModalContentTitle>{translate('end-room')}</ModalContentTitle>
+          <ModalContentSubtitle>{translate('end-room-confirm')}</ModalContentSubtitle>
         </ModalContent>
         <ModalActions>
           <ButtonOutlined
             type="button"
+            aria-label={translate('cancel')}
             color_scheme={{ text: colors.white.base, accent: colors.black[40] }}
             disabled={loading}
             onClick={handleClose}
             height={40}
             min_width="100px"
           >
-            <p>Cancelar</p>
+            <p>{translate('cancel')}</p>
           </ButtonOutlined>
           <ButtonOutlined
             type="button"
+            aria-label={translate('confirm')}
             color_scheme={{ text: colors.danger.text, accent: colors.danger.base }}
             disabled={loading}
             onClick={handleEndRoom}
             height={40}
             min_width="100px"
           >
-            {loading ? <LoaderSpinner size={15} /> : <p>Confirmar</p>}
+            {loading ? <LoaderSpinner size={15} /> : <p>{translate('confirm')}</p>}
           </ButtonOutlined>
         </ModalActions>
       </>

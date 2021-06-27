@@ -7,7 +7,7 @@ interface ContainerProps extends ThemeProps {
 }
 
 export const FlexContainer = styled.div<ContainerProps>`
-  padding: 0 ${({ theme }: ContainerProps) => theme.spacing[4]};
+  padding: 0 32px;
   flex: ${({ flex }: ContainerProps) => flex || 'initial'};
   width: ${({ width }: ContainerProps) => (width ? `${width}px` : 'auto')};
   height: ${({ height }: ContainerProps) => `calc(100% - ${Number(height) >= 0 ? height : 85}px)`};

@@ -35,7 +35,7 @@ function AuthProvider({ children }: Props) {
       const { displayName, photoURL, uid } = result.user;
 
       if (!displayName || !photoURL) {
-        throw new Error('Missing information from Google Account.');
+        throw new Error('');
       }
 
       setUser({
@@ -55,7 +55,7 @@ function AuthProvider({ children }: Props) {
             const { displayName, photoURL, uid } = usr;
 
             if (!displayName || !photoURL) {
-              throw new Error('Missing information from Google Account.');
+              throw new Error('');
             }
 
             setUser({

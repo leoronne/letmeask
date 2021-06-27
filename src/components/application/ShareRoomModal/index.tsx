@@ -6,6 +6,8 @@ import ShareButton from './ShareButton';
 import * as Icons from '../../ui/Icons';
 import { Input, InputAdornment, Modal, ModalContent, Tooltip } from '../../ui';
 
+import { useLanguage } from '../../../hooks';
+
 import { animateCheck } from '../../../utils/animate-check';
 
 import * as Styles from './styles';
@@ -19,6 +21,7 @@ interface ShareRoomModalProps {
 
 function ShareRoomModal({ id, open, setOpen, title }: ShareRoomModalProps) {
   const { enqueueSnackbar } = useSnackbar();
+  const { translate } = useLanguage();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -26,7 +29,7 @@ function ShareRoomModal({ id, open, setOpen, title }: ShareRoomModalProps) {
     try {
       setLoading(true);
       navigator.clipboard.writeText(id);
-      enqueueSnackbar('Copiado para área de transferência', { variant: 'success' });
+      enqueueSnackbar(translate('copied-clipboard'), { variant: 'success' });
     } catch (err) {
       enqueueSnackbar(err.message, { variant: 'error' });
     } finally {
@@ -44,7 +47,7 @@ function ShareRoomModal({ id, open, setOpen, title }: ShareRoomModalProps) {
   };
 
   return (
-    <Modal isOpen={open} setOpen={handleClose} title="Compartilhar" maxWidth="xs">
+    <Modal isOpen={open} setOpen={handleClose} title={translate('share')} maxWidth="xs">
       <>
         <ModalContent>
           <Styles.Container>
@@ -58,15 +61,19 @@ function ShareRoomModal({ id, open, setOpen, title }: ShareRoomModalProps) {
             <Input
               name="room"
               type="text"
-              label="Código da sala"
+              label={translate('room-code')}
               value={id}
               height={40}
               variant="outlined"
               disabled
               InputProps={{
                 endAdornment: (
-                  <Tooltip title="Copiar código da sala" placement="bottom" arrow>
-                    <InputAdornment position="end" onClick={copyRoomCodeToClipboard} aria-label="Copiar código da sala">
+                  <Tooltip title={translate('copy-room-code')} placement="bottom" arrow>
+                    <InputAdornment
+                      position="end"
+                      onClick={copyRoomCodeToClipboard}
+                      aria-label={translate('copy-room-code')}
+                    >
                       <Icons.CopyIcon width={20} height={20} />
                     </InputAdornment>
                   </Tooltip>

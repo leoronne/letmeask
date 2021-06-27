@@ -16,6 +16,8 @@ import {
 
 import { database } from '../../../services/firebase';
 
+import { useLanguage } from '../../../hooks';
+
 import { colors, borderRadius } from '../../../styles/theme';
 
 interface DeleteButtonProps {
@@ -25,6 +27,8 @@ interface DeleteButtonProps {
 
 function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
   const { enqueueSnackbar } = useSnackbar();
+
+  const { translate } = useLanguage();
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -39,7 +43,7 @@ function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
 
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
 
-      enqueueSnackbar('Pergunta excluída', { variant: 'success' });
+      enqueueSnackbar(translate('deleted-question'), { variant: 'success' });
       setModalOpen(false);
     } catch (err) {
       enqueueSnackbar(err?.response?.data?.error || err.message, { variant: 'error' });
@@ -50,9 +54,9 @@ function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
 
   return (
     <>
-      <Tooltip title="Excluir pergunta" placement="bottom" arrow>
+      <Tooltip title={translate('delete-question')} placement="bottom" arrow>
         <IconButton
-          aria-label="Excluir pergunta"
+          aria-label={translate('delete-question')}
           border_radius={borderRadius.extraLarge}
           padding={6}
           width="32px"
@@ -67,28 +71,30 @@ function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
         <>
           <ModalContent>
             <Icons.DeleteIcon fill={colors.danger.base} width={35} height={35} />
-            <ModalContentTitle>Excluir pergunta</ModalContentTitle>
-            <ModalContentSubtitle>Tem certeza que você deseja excluir esta pergunta?</ModalContentSubtitle>
+            <ModalContentTitle>{translate('delete-question')}a</ModalContentTitle>
+            <ModalContentSubtitle>{translate('delete-question-text')}</ModalContentSubtitle>
           </ModalContent>
           <ModalActions>
             <ButtonOutlined
               type="button"
+              aria-label={translate('cancel')}
               color_scheme={{ text: colors.white.base, accent: colors.black[40] }}
               disabled={loading}
               onClick={() => setModalOpen(false)}
               height={40}
             >
-              <p>Cancelar</p>
+              <p>{translate('cancel')}</p>
             </ButtonOutlined>
             <ButtonOutlined
               type="button"
+              aria-label={translate('confirm')}
               color_scheme={{ text: colors.danger.text, accent: colors.danger.base }}
               disabled={loading}
               onClick={handleDeleteQuestion}
               height={40}
               min_width="100px"
             >
-              {loading ? <LoaderSpinner size={15} /> : <p>Confirmar</p>}
+              {loading ? <LoaderSpinner size={15} /> : <p>{translate('confirm')}</p>}
             </ButtonOutlined>
           </ModalActions>
         </>
