@@ -9,7 +9,8 @@ import './services/firebase';
 ReactDOM.render(
   <React.Suspense
     fallback={
-      <FlexContainer height="100vh">
+      // <body> native margins
+      <FlexContainer height="calc(100vh - 16px)">
         <LoaderSpinner size={40} />
       </FlexContainer>
     }
