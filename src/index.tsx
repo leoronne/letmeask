@@ -9,7 +9,7 @@ import './services/firebase';
 ReactDOM.render(
   <React.Suspense
     fallback={
-      <FlexContainer height={0}>
+      <FlexContainer height="100vh">
         <LoaderSpinner size={40} />
       </FlexContainer>
     }

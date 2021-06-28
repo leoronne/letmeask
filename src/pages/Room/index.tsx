@@ -41,7 +41,7 @@ function Room() {
 
   if (loadingRoom || loadingAuth) {
     return (
-      <FlexContainer height={0}>
+      <FlexContainer>
         <LoaderSpinner size={40} />
       </FlexContainer>
     );
@@ -59,9 +59,7 @@ function Room() {
 
         <Styles.Main height={questions.length === 0 ? '100%' : 'auto'}>
           <Styles.RoomTitle>
-            <Tooltip title={String(currentRoom?.title)} placement="right" arrow>
-              <Styles.Title>{currentRoom?.title}</Styles.Title>
-            </Tooltip>
+            <Styles.Title>{currentRoom?.title}</Styles.Title>
             {questions.length > 0 && (
               <Breadcrumb>{`${kFormatter(questions.length)} ${translate('question')}${
                 questions.length > 1 ? 's' : ''

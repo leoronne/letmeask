@@ -26,7 +26,7 @@ function Auth({ children }: Props) {
           <Styles.Subtitle>{translate('home-title-2')}</Styles.Subtitle>
         </Styles.Aside>
         {loadingAuth ? (
-          <FlexContainer height={0} flex={8}>
+          <FlexContainer flex={8}>
             <LoaderSpinner size={40} />
           </FlexContainer>
         ) : (
