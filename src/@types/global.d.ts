@@ -210,4 +210,7 @@ type TranslateProps =
   | 'end-room-confirm'
   | 'must-be-owner'
   | 'share-room'
-  | 'log-out';
+  | 'log-out'
+  | 'answered-question'
+  | 'highlighted-question'
+  | 'answered-highlighted-question';

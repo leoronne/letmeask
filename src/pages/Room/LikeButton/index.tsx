@@ -16,13 +16,14 @@ import * as Styles from './styles';
 interface LikeButtonProps {
   liked: boolean;
   likes: number;
+  isAnswered: boolean;
   roomId: string;
   questionId: string;
   likeId: string | undefined;
   user: User | undefined;
 }
 
-function LikeButton({ user, liked, likes, roomId, questionId, likeId }: LikeButtonProps) {
+function LikeButton({ user, liked, likes, roomId, questionId, likeId, isAnswered }: LikeButtonProps) {
   const { enqueueSnackbar } = useSnackbar();
 
   const { translate } = useLanguage();
@@ -59,6 +60,7 @@ function LikeButton({ user, liked, likes, roomId, questionId, likeId }: LikeButt
         width={likes > 0 ? 'max-content' : '32px'}
         height={32}
         onClick={() => handleLikeQuestions()}
+        disabled={isAnswered}
       >
         {likes > 0 && <Styles.Likes liked={liked}>{kFormatter(likes)}</Styles.Likes>}
         <Icons.LikeIcon width={15} height={15} fill={liked ? colors.primary.base : colors.black[40]} />

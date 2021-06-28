@@ -52,6 +52,13 @@ function Room() {
     return <Redirect to="/" />;
   }
 
+  const getQuestionText = (isAnswered: boolean, isHighlighted: boolean) => {
+    if (isAnswered && isHighlighted) return translate('answered-highlighted-question');
+    if (isAnswered) return translate('answered-question');
+    if (isHighlighted) return translate('highlighted-question');
+    return '';
+  };
+
   return (
     <Fade in timeout={500} disableStrictModeCompat>
       <Styles.Container>
@@ -83,6 +90,7 @@ function Room() {
                 admin={isAdmin}
                 answered={Boolean(question?.isAnswered)}
                 highlighted={Boolean(question?.isHighlighted)}
+                tooltiptext={getQuestionText(Boolean(question?.isAnswered), Boolean(question?.isHighlighted))}
               >
                 {isAdmin && (
                   <>
@@ -99,11 +107,12 @@ function Room() {
                     <DeleteButton roomId={roomId} questionId={question.id} />
                   </>
                 )}
-                {!isAdmin && !question.isAnswered && (
+                {!isAdmin && (
                   <LikeButton
                     liked={question?.hasLiked}
                     likes={question?.likeCount}
                     likeId={question?.likeId}
+                    isAnswered={Boolean(question.isAnswered)}
                     roomId={roomId}
                     questionId={question.id}
                     user={user}

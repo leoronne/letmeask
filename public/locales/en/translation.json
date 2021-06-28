@@ -47,5 +47,8 @@
   "end-room-confirm": "Are you sure you want to close this room?",
   "must-be-owner": "You must be the owner of the room to do this",
   "share-room": "Share room",
-  "log-out": "Log out"
+  "log-out": "Log out",
+  "answered-question": "This question has already been answered",
+  "highlighted-question": "This question has been highlighted",
+  "answered-highlighted-question": "This question is highlighted and has already been answered"
 }

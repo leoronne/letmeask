@@ -21,13 +21,25 @@
 
 </p>
 
+<br>
+
+##
+
+<p align="center">
+  <img src="src\assets\img\banner.png"/>
+</p>
+
 ##
 
 <br>
 
 ## Project :star2:
 
-This repo contains an application was idealized by @Rocketseat's Next Level Week #6 - Together.
+Let Me Ask lets you create real-time Q&A rooms and organize your audience questions.
+
+<br>
+
+It was Firstly idealized by @Rocketseat's Next Level Week #6 - Together.
 
 <br>
 
