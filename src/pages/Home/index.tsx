@@ -10,7 +10,7 @@ import { database } from '../../services/firebase';
 
 import { useAuth, useLanguage } from '../../hooks';
 
-import { theme } from '../../styles/theme';
+import { spacing } from '../../styles/theme';
 import * as Styles from './styles';
 
 function Home() {
@@ -62,7 +62,7 @@ function Home() {
 
   const ButtonLogo = () => {
     if (!user) return <Icons.GoogleIcon />;
-    return <UserAvatar src={user.avatar} alt={user.name} margin_right={theme.spacing[2]} />;
+    return <UserAvatar src={user.avatar} alt={user.name} margin_right={spacing[2]} />;
   };
 
   return (

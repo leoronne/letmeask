@@ -4,6 +4,7 @@ import { Fade } from '@material-ui/core';
 import { useAuth, useLanguage } from '../../hooks';
 
 import { LoaderSpinner, FlexContainer } from '../../components/ui';
+import { AuthPageHeader } from '../../components/application';
 
 import * as Styles from './styles';
 
@@ -18,6 +19,7 @@ function Auth({ children }: Props) {
   return (
     <Fade in timeout={500}>
       <Styles.Container>
+        <AuthPageHeader />
         <Styles.Aside>
           <Styles.HomeIllustration />
           <Styles.Title>{translate('home-title-1')}</Styles.Title>

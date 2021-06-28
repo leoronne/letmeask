@@ -32,7 +32,7 @@ function Room() {
   const { translate } = useLanguage();
 
   const { user, signInWithGoogle, loadingAuth } = useAuth();
-  const { questions, currentRoom, loadingRoom } = useRoom(roomId);
+  const { questions, currentRoom, loadingRoom } = useRoom(roomId, user);
 
   const isAdmin = useMemo(
     () => Boolean(user && currentRoom && user?.id === currentRoom?.authorId),

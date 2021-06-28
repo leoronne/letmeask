@@ -30,7 +30,6 @@ function AuthProvider({ children }: Props) {
   const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
-
     if (result?.user) {
       const { displayName, photoURL, uid } = result.user;
 

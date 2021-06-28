@@ -12,6 +12,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: stretch;
+  position: relative;
 `;
 
 export const Aside = styled.aside`

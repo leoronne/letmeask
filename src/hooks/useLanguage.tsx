@@ -18,12 +18,11 @@ interface Props {
 function LanguageProvider({ children }: Props) {
   const { t } = useTranslation();
 
-  const [language, setLanguage] = useState<string>(i18n.language);
+  const [language, setLanguage] = useState<string>(i18n.language || 'en');
 
   const changeLanguage = useCallback((lgn: string) => {
     try {
       if (i18n.language !== lgn.toLowerCase() && (lgn.toLowerCase() === 'en' || lgn.toLowerCase() === 'pt')) {
-        console.log('caiu if');
         i18n.changeLanguage(lgn.toLowerCase());
         localStorage.setItem('@LetMeAsk:language', lgn);
         setLanguage(lgn);

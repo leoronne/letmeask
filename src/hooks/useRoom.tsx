@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 
 import { database } from '../services/firebase';
 
-import { useAuth } from './useAuth';
+import { User } from './useAuth';
 import { useLanguage } from './useLanguage';
 
 interface Room {
@@ -14,11 +14,10 @@ interface Room {
   endedAt: Date | undefined;
 }
 
-export function useRoom(roomId: string) {
+export function useRoom(roomId: string, user: User | undefined) {
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
 
-  const { user } = useAuth();
   const { translate } = useLanguage();
 
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -88,7 +87,9 @@ export function useRoom(roomId: string) {
     } catch (err) {
       enqueueSnackbar(err?.response?.data?.error || err.message, { variant: 'error' });
     }
-  }, [roomId, user, enqueueSnackbar, history, translate]);
+    // Prevents to re-render because of the translate function
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roomId, user, enqueueSnackbar, history]);
 
   useEffect(() => {
     getQuestions();

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import EndRoomModal from '../EndRoomModal';
@@ -64,9 +64,9 @@ function RoomHeader({ id, admin = false, user, roomTitle }: Props) {
             <MenuItem>
               <ListItemIcon>
                 {language === 'pt' ? (
-                  <Icons.BrazilIcon width={18} height={18} fill={colors.danger.base} />
+                  <Icons.BrazilIcon width={18} height={18} />
                 ) : (
-                  <Icons.USAIcon width={18} height={18} fill={colors.danger.base} />
+                  <Icons.USAIcon width={18} height={18} />
                 )}
               </ListItemIcon>
 
@@ -89,4 +89,4 @@ function RoomHeader({ id, admin = false, user, roomTitle }: Props) {
   );
 }
 
-export default memo(RoomHeader);
+export default RoomHeader;

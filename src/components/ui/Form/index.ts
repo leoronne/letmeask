@@ -15,6 +15,6 @@ export const Form = styled.form<FormProps>`
   min-height: ${({ min_height }: FormProps) => min_height || 132}px;
 
   @media (max-width: 425px) {
-    min-height: 200px;
+    min-height: ${({ min_height }: FormProps) => min_height || 132}px;
   }
 `;
