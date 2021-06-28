@@ -12,4 +12,6 @@ export const Breadcrumb = styled.span<BreadcrumbProps>`
   color: ${({ theme }: BreadcrumbProps) => theme.colors.white.base};
   background: ${({ theme }: BreadcrumbProps) => theme.colors.secondary.base};
   border-radius: ${({ theme }: BreadcrumbProps) => theme.borderRadius.large};
+
+  text-align: center;
 `;

@@ -29,6 +29,10 @@ export const RoomTitle = styled.div<ThemeProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Title = styled.h2<ThemeProps>`
@@ -37,10 +41,9 @@ export const Title = styled.h2<ThemeProps>`
   font-weight: 600;
   color: ${({ theme }: ThemeProps) => theme.colors.black.base};
 
-  max-width: 60%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const NoQuestionsContainer = styled.div<ThemeProps>`

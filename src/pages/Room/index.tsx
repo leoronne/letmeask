@@ -60,7 +60,7 @@ function Room() {
         <Styles.Main height={questions.length === 0 ? '100%' : 'auto'}>
           <Styles.RoomTitle>
             <Tooltip title={String(currentRoom?.title)} placement="right" arrow>
-              <Styles.Title>{`${translate('room')} ${currentRoom?.title}`}</Styles.Title>
+              <Styles.Title>{currentRoom?.title}</Styles.Title>
             </Tooltip>
             {questions.length > 0 && (
               <Breadcrumb>{`${kFormatter(questions.length)} ${translate('question')}${

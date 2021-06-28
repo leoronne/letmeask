@@ -71,7 +71,7 @@ function DeleteButton({ roomId, questionId }: DeleteButtonProps) {
         <>
           <ModalContent>
             <Icons.DeleteIcon fill={colors.danger.base} width={35} height={35} />
-            <ModalContentTitle>{translate('delete-question')}a</ModalContentTitle>
+            <ModalContentTitle>{translate('delete-question')}</ModalContentTitle>
             <ModalContentSubtitle>{translate('delete-question-text')}</ModalContentSubtitle>
           </ModalContent>
           <ModalActions>
