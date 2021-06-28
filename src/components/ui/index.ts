@@ -2,6 +2,7 @@ export { Separator } from './Separator';
 export { ButtonOutlined } from './Button';
 export { Input, InputAdornment } from './Input';
 export { Link } from './Link';
+export { LinkButton } from './LinkButton';
 export { Form } from './Form';
 export { FlexContainer } from './FlexContainer';
 export { IconButton } from './IconButton';

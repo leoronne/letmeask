@@ -9,7 +9,7 @@ import { IoMdClose, IoIosSend } from 'react-icons/io';
 import { VscCloseAll } from 'react-icons/vsc';
 import { ImCancelCircle, ImFacebook, ImWhatsapp, ImTwitter } from 'react-icons/im';
 import { GiStarFormation } from 'react-icons/gi';
-import { BiLink } from 'react-icons/bi';
+import { BiLink, BiExit, BiDoorOpen } from 'react-icons/bi';
 import { RiDoorClosedLine, RiListSettingsLine, RiShareForwardLine } from 'react-icons/ri';
 
 import { ReactComponent as Logo } from '../../../assets/img/svg/logo.svg';
@@ -145,6 +145,13 @@ export const USAIcon = styled(USA)<IconProps>`
   ${iconCSS}
 `;
 
+export const LogOutIcon = styled(BiExit)<IconProps>`
+  ${iconCSS}
+`;
+
+export const RoomsIcon = styled(BiDoorOpen)<IconProps>`
+  ${iconCSS}
+`;
 
 export const CheckAnimatedIcon = styled(Check)<IconProps>`
   width: ${({ width }: IconProps) => width || 20}px;

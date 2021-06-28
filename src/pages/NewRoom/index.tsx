@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { useHistory, Link as RouterLink } from 'react-router-dom';
+import { useHistory, Link as RouterLink, Redirect } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 import { useAuth, useLanguage } from '../../hooks';
@@ -15,7 +15,7 @@ function NewRoom() {
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { user } = useAuth();
+  const { user, loadingAuth } = useAuth();
   const { translate } = useLanguage();
 
   const [room, setRoom] = useState<string>('');
@@ -47,6 +47,11 @@ function NewRoom() {
       setLoading(false);
     }
   };
+
+  if (!loadingAuth && !user) {
+    enqueueSnackbar(translate('must-be-logged'), { variant: 'error', preventDuplicate: true });
+    return <Redirect to="/" />;
+  }
 
   return (
     <Styles.Main>

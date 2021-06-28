@@ -46,5 +46,6 @@
   "ended-room": "Your room was closed",
   "end-room-confirm": "Are you sure you want to close this room?",
   "must-be-owner": "You must be the owner of the room to do this",
-  "share-room": "Share room"
+  "share-room": "Share room",
+  "log-out": "Log out"
 }

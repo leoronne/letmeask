@@ -46,5 +46,6 @@
   "ended-room": "Sala encerrada",
   "end-room-confirm": "Tem certeza que você deseja encerrar esta sala?",
   "must-be-owner": "Você deve ser o dono da sala para fazer esta ação",
-  "share-room": "Compartilhar sala"
+  "share-room": "Compartilhar sala",
+  "log-out": "Sair"
 }

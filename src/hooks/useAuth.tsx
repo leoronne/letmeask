@@ -13,6 +13,7 @@ interface AuthContextProps {
   user?: User;
   loadingAuth: boolean;
   signInWithGoogle(): Promise<void>;
+  logOut: () => void;
 }
 
 interface Props {
@@ -43,6 +44,11 @@ function AuthProvider({ children }: Props) {
         avatar: photoURL,
       });
     }
+  };
+
+  const logOut = () => {
+    setUser(undefined);
+    auth.signOut();
   };
 
   const getUser = useCallback(async () => {
@@ -79,7 +85,9 @@ function AuthProvider({ children }: Props) {
     getUser();
   }, [getUser]);
 
-  return <AuthContext.Provider value={{ user, signInWithGoogle, loadingAuth }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, signInWithGoogle, logOut, loadingAuth }}>{children}</AuthContext.Provider>
+  );
 }
 
 const useAuth = (): AuthContextProps => {

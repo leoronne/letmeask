@@ -209,4 +209,5 @@ type TranslateProps =
   | 'ended-room'
   | 'end-room-confirm'
   | 'must-be-owner'
-  | 'share-room';
+  | 'share-room'
+  | 'log-out';

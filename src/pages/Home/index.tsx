@@ -76,6 +76,7 @@ function Home() {
           aria-label={translate('create-with-google')}
           color_scheme={{ accent: '#EA4335', text: '#fff' }}
           min_width="100%"
+          max_width="max-content"
           onClick={() => handleCreateRoom()}
           disabled={loadingCreateRoom}
         >
@@ -100,6 +101,7 @@ function Home() {
             type="submit"
             aria-label={translate('enter-room')}
             min_width="100%"
+            max_width="max-content"
             disabled={loadingJoinRoom}
           >
             {loadingJoinRoom ? <LoaderSpinner size={20} /> : <Icons.LoginIcon />}

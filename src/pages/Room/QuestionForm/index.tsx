@@ -3,7 +3,7 @@ import { useSnackbar } from 'notistack';
 
 import { UserInfo } from '../../../components/application';
 import * as Icons from '../../../components/ui/Icons';
-import { ButtonOutlined, Form, Input, LoaderSpinner } from '../../../components/ui';
+import { ButtonOutlined, Form, Input, LinkButton, LoaderSpinner } from '../../../components/ui';
 
 import { User } from '../../../hooks/useAuth';
 import { useLanguage } from '../../../hooks';
@@ -89,9 +89,9 @@ function QuestionForm({ user, roomId, signIn }: QuestionFormProps) {
         ) : (
           <Styles.Authenticate>
             {`${translate('not-logged-send-question-1')}, `}
-            <Styles.AuthenticateButton type="button" aria-label={translate('must-be-logged')} onClick={handleSignIn}>
+            <LinkButton type="button" aria-label={translate('must-be-logged')} onClick={handleSignIn}>
               {translate('not-logged-send-question-2')}
-            </Styles.AuthenticateButton>
+            </LinkButton>
             .
           </Styles.Authenticate>
         )}

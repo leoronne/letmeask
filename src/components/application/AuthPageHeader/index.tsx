@@ -3,12 +3,14 @@ import { memo } from 'react';
 import * as Icons from '../../ui/Icons';
 import { DropdownMenu, ListItemIcon, MenuItem } from '../../ui';
 
-import { useLanguage } from '../../../hooks';
+import { useLanguage, useAuth } from '../../../hooks';
 
+import { colors } from '../../../styles/theme';
 import * as Styles from './styles';
 
 function AuthHeader() {
-  const { language, changeLanguage } = useLanguage();
+  const { user, logOut } = useAuth();
+  const { language, translate, changeLanguage } = useLanguage();
 
   return (
     <>
@@ -32,6 +34,14 @@ function AuthHeader() {
               </MenuItem>
             </Styles.SelectInput>
           </MenuItem>
+          {user && (
+            <MenuItem onClick={() => logOut()}>
+              <ListItemIcon>
+                <Icons.LogOutIcon width={20} height={20} fill={colors.primary.base} />
+              </ListItemIcon>
+              <span>{translate('log-out')}</span>
+            </MenuItem>
+          )}
         </DropdownMenu>
       </Styles.Container>
     </>
