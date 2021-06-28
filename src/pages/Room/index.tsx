@@ -8,7 +8,7 @@ import DeleteButton from './DeleteButton';
 import LikeButton from './LikeButton';
 
 import * as Icons from '../../components/ui/Icons';
-import { Breadcrumb, FlexContainer, LoaderSpinner, Tooltip } from '../../components/ui';
+import { Breadcrumb, FlexContainer, LoaderSpinner } from '../../components/ui';
 import { Question, RoomHeader } from '../../components/application';
 
 import { useAuth, useLanguage, useRoom } from '../../hooks';
