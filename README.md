@@ -31,7 +31,7 @@
 
 ## Project :star2:
 
-Let Me Ask lets you create real-time Q&A rooms and organize your audience questions.
+Let Me Ask is a simple application that lets the user create real-time Q&A rooms and organize their audience questions (pin, favorite or mark as answered). It was made using the Real Time Database from Firebase.
 
 <br>
 
