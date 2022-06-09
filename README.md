@@ -35,7 +35,7 @@ Let Me Ask is a simple application that lets the user create real-time Q&A rooms
 
 <br>
 
-It was Firstly idealized by @Rocketseat's Next Level Week #6 - Together.
+It was firstly idealized by @Rocketseat's Next Level Week #6 - Together.
 
 <br>
 
